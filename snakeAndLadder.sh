@@ -66,5 +66,15 @@ do
         then
                 start=0
                 echo "player is at $start"
-        fi
+
+	elif(($start>$winPosition))
+        then
+                start=`expr $start - $dieValue`
+                echo "player is at same position $start"
+
+        elif(($start==$winPosition))
+        then
+                echo "player wins"
+                exit
+	fi
 done
