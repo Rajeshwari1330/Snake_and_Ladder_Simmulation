@@ -9,3 +9,9 @@ start=0
 echo "Game Starts"
 echo "player 1 is at $start now"
 
+function die()
+{
+	dieValue=$((RANDOM%6 + 1))
+        echo "The die value is : $dieValue"
+}
+die
