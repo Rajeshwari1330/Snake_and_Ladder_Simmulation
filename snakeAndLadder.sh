@@ -47,6 +47,7 @@ done
 }
 
 winPosition=100
+zero=0
 while(($start<$winPosition+1))
 do
         die
@@ -59,5 +60,11 @@ do
                 echo "You dont get any snake or ladder, you are in NO PLAY condition."
                 echo "Player is at $start now"
 		echo "---------------------------------------------------------------"
+        fi
+
+	if(($start<$zero))
+        then
+                start=0
+                echo "player is at $start"
         fi
 done
