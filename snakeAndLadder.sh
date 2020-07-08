@@ -14,4 +14,50 @@ function die()
 	dieValue=$((RANDOM%6 + 1))
         echo "The die value is : $dieValue"
 }
-die
+
+function ladderCheck()
+{
+for value in ${ladder[@]}
+do
+        if(($value==$start))
+        then
+                echo "the position is $start, you got a ladder."
+                start=`expr $start + $dieValue`
+                echo "the position is $start"
+		echo "------------------------------------------"
+                break
+        fi
+done
+}
+
+function snakeCheck()
+{
+for value in ${snake[@]}
+do
+        if(($value==$start))
+        then
+                echo "The position is $start"
+                start=`expr $start - $dieValue`
+                start=`expr $start - $dieValue`
+                echo "You got a snake, the position is $start"
+		echo "-----------------------------------------"
+                break
+        fi
+done
+}
+
+winPosition=100
+while(($start<$winPosition+1))
+do
+        die
+        start=`expr $start + $dieValue`
+        newStart=$start
+        ladderCheck
+        snakeCheck
+        if(($newStart==$start))
+        then
+                echo "You dont get any snake or ladder, you are in NO PLAY condition."
+                echo "Player is at $start now"
+		echo "---------------------------------------------------------------"
+        fi
+done
