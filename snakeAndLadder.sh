@@ -48,8 +48,11 @@ done
 
 winPosition=100
 zero=0
+dieCount=0
+
 while(($start<$winPosition+1))
 do
+	let "dieCount = dieCount+1"
         die
         start=`expr $start + $dieValue`
         newStart=$start
@@ -74,7 +77,8 @@ do
 
         elif(($start==$winPosition))
         then
-                echo "player wins"
+		echo "Player Won."
+		echo "Die is rolled $dieCount times. "
                 exit
 	fi
 done
